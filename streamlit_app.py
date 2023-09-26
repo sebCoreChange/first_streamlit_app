@@ -65,10 +65,24 @@ if streamlit.button('Get Know cold fruits'):
 
 streamlit.stop()
 
+def insert_row_snowflake(new_fruit):
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('"+ new_fruit +"');")
+        return "thanks for adding " + new_fruit
+
+streamlit.text("What fruit would you like to add") 
+try: 
+    fruit_add = streamlit.text_input('What fruit would you like information about?')
+    if not fruit_add:
+        streamlit.error("Specifie a fruit to add.")
+    else:
+        if streamlit.button('Get Know cold fruits'):
+            my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+            back_from_function = insert_row_snowflake(fruit_add)
+            streamlit.text(back_from_function)
 
 
-#streamlit.text("What fruit would you like to add") 
-fruit_add = streamlit.text_input('What fruit would you like to add','Kiwi')
-streamlit.text("Thanks for adding: " + fruit_add ) 
 
-my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('from');")
+
+#fruit_add = streamlit.text_input('What fruit would you like to add','Kiwi')
+#streamlit.text("Thanks for adding: " + fruit_add ) 
