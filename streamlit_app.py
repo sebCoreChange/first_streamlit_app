@@ -62,9 +62,6 @@ if streamlit.button('Get Know cold fruits'):
 
 # my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 
-
-streamlit.stop()
-
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
         my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('"+ new_fruit +"');")
@@ -83,6 +80,7 @@ try:
 except URLERROR as e:
     streamlit.error()
 
+streamlit.stop()
 
 
 #fruit_add = streamlit.text_input('What fruit would you like to add','Kiwi')
