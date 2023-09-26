@@ -80,7 +80,8 @@ try:
             my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
             back_from_function = insert_row_snowflake(fruit_add)
             streamlit.text(back_from_function)
-
+except URLERROR as e:
+    streamlit.error()
 
 
 
