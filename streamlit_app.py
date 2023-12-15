@@ -100,7 +100,7 @@ SELECT * From StreamLitFruitInfo
 MotherDuck_DF = con.execute(query).df()
 
 # Line Graph of Downloads Over Time
-streamlit.subheader("Monthly Downloads Over Time")
+streamlit.subheader("Fruit Score")
 df_monthly = MotherDuck_DF.groupby('Fruit')['Score'].sum().reset_index()
 streamlit.bar_chart(df_monthly.set_index('Fruit'))
 
