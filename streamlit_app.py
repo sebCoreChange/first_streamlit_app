@@ -84,7 +84,7 @@ def get_fruit_load_list():
 #     streamlit.error()
 
 
-con = duckdb.connect('md:?motherduck_token=streamlit.secrets.MotherDuck.MotherDuckKey')
+con = duckdb.connect('md:?motherduck_token=' + streamlit.secrets.MotherDuck.MotherDuckKey)
 streamlit.stop()
 
 # Query for filtered data
