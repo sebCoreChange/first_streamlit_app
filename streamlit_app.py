@@ -84,15 +84,15 @@ def get_fruit_load_list():
 #     streamlit.error()
 
 streamlit.write(  
-    streamlit.secrets["MotherDuck"]["MotherDuckKey"]
+    "motherduckinginfo."
 )
 
 
 
+mother_duck_toekn = streamlit.secrets["MotherDuck"]["MotherDuckKey"] 
+con = duckdb.connect('md:?motherduck_token=' +mother_duck_toekn )
 streamlit.stop()
-# mother_duck_toekn = streamlit.secrets.MotherDuck.MotherDuckKey 
 
-# con = duckdb.connect('md:?motherduck_token=' + )
 
 # # Query for filtered data
 # query = """
