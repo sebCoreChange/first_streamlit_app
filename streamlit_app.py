@@ -1,7 +1,9 @@
 import streamlit
 import requests
-import snowflake.connector
+# import snowflake.connector
 import pandas
+import duckdb
+
 
 from urllib.error import URLError
 
@@ -80,6 +82,15 @@ def get_fruit_load_list():
 #         streamlit.text("inner text")
 # except URLERROR as e:
 #     streamlit.error()
+
+con = duckdb.connect('md:?motherduck_token=streamlit.secrets.MotherDuck.MotherDuckKey')
+
+# Query for filtered data
+query = """
+SELECT * From StreamLitFruitInfo
+"""
+df = con.execute(query).df()
+
 
 streamlit.stop()
 
