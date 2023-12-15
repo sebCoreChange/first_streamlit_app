@@ -83,6 +83,8 @@ def get_fruit_load_list():
 # except URLERROR as e:
 #     streamlit.error()
 
+streamlit.stop()
+
 con = duckdb.connect('md:?motherduck_token=streamlit.secrets.MotherDuck.MotherDuckKey')
 
 # Query for filtered data
@@ -92,7 +94,6 @@ SELECT * From StreamLitFruitInfo
 df = con.execute(query).df()
 
 
-streamlit.stop()
 
 
 #fruit_add = streamlit.text_input('What fruit would you like to add','Kiwi')
