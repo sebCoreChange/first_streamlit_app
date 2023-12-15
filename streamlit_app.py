@@ -84,7 +84,7 @@ def get_fruit_load_list():
 #     streamlit.error()
 
 streamlit.write(  
-    streamlit.secrets["MotherDuck"]
+    streamlit.secrets["MotherDuck"]["MotherDuckKey"]
 )
 
 
