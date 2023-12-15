@@ -85,6 +85,7 @@ def get_fruit_load_list():
 
 
 con = duckdb.connect('md:?motherduck_token=streamlit.secrets.MotherDuck.MotherDuckKey')
+streamlit.stop()
 
 # Query for filtered data
 query = """
@@ -92,7 +93,6 @@ SELECT * From StreamLitFruitInfo
 """
 df = con.execute(query).df()
 
-streamlit.stop()
 
 
 
