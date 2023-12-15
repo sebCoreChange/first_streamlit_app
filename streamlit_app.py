@@ -91,16 +91,20 @@ streamlit.write(
 
 mother_duck_toekn = streamlit.secrets["MotherDuck"]["MotherDuckKey"] 
 con = duckdb.connect('md:?motherduck_token=' +mother_duck_toekn )
+
+
+# Query for filtered data
+query = """
+SELECT * From StreamLitFruitInfo
+"""
+MotherDuck_DF = con.execute(query).df()
+
+# Line Graph of Downloads Over Time
+st.subheader("Monthly Downloads Over Time")
+df_monthly = MotherDuck_DF.groupby('Fruit')['Score'].sum().reset_index()
+st.line_chart(df_monthly.set_index('Fruit'))
+
 streamlit.stop()
-
-
-# # Query for filtered data
-# query = """
-# SELECT * From StreamLitFruitInfo
-# """
-# df = con.execute(query).df()
-
-
 
 
 #fruit_add = streamlit.text_input('What fruit would you like to add','Kiwi')
