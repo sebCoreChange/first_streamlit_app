@@ -102,7 +102,7 @@ MotherDuck_DF = con.execute(query).df()
 # Line Graph of Downloads Over Time
 streamlit.subheader("Monthly Downloads Over Time")
 df_monthly = MotherDuck_DF.groupby('Fruit')['Score'].sum().reset_index()
-streamlit.line_chart(df_monthly.set_index('Fruit'))
+streamlit.bar_chart(df_monthly.set_index('Fruit'))
 
 streamlit.stop()
 
