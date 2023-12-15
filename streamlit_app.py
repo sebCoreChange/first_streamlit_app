@@ -83,6 +83,11 @@ def get_fruit_load_list():
 # except URLERROR as e:
 #     streamlit.error()
 
+streamlit.write(  
+    streamlit.secrets["MotherDuck"]
+)
+
+
 
 streamlit.stop()
 # mother_duck_toekn = streamlit.secrets.MotherDuck.MotherDuckKey 
